@@ -12,7 +12,7 @@ public:
         }
         
         vector<int> dis(n, -1);    // Save the discover time of a node
-        vector<int> low(n, -1);    // Save the lowest dis time of its neighbour except for its parent
+        vector<int> low(n, -1);    // Save the lowest discover time of its neighbour except for its parent
         
         for (int i = 0; i < n; i++) {
             if (dis[i] != -1)    continue;    // Visited

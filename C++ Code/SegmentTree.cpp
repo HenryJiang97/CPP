@@ -5,6 +5,24 @@ struct SegmentTree {
     int start;
     int end;
     SegmentTree(int s, int e) : sum(0), start(s), end(e), left(NULL), right(NULL) {}
+
+public:
+    void setStatus(int i, int j, int s) {
+        if (i <= start && j >= end && left == NULL) {    // If the interval is included in [start, end]
+            sum += s;
+            return;
+        }
+        if (i > end || j < start)    return;    // The interval is outside [start, end]
+        
+        int mid = start + (end - start) / 2;
+        if (left == NULL) {    // Create new left node
+            left = new SegmentTree(left, mid);
+            right = new SegmentTree(mid, right); 
+        }
+        
+        left->setStatus(i, j, s);
+        right->setStatus(i, j, s);
+    }
 };
 
 
