@@ -1,6 +1,7 @@
 // C(n, k) = cnk[n][k]
 
 vector<vector<int>> getCnk(int n) {
+    const int mod = 1e9 + 7;
     vector<vector<int>> cnk(n + 1, vector<int>(n + 1, 1));
     for (int i = 1; i <= n; i++) {
         for (int j = 1; j < i; j++) {
