@@ -1,8 +1,6 @@
-using namespace std;
-
 class quicksort {
 public:
-    void static qsort(int* arr, int lo, int hi) {
+    void static qsort(vector<int>& arr, int lo, int hi) {
         if (lo >= hi)    return;
         int mid = partition(arr, lo, hi);
 
@@ -11,7 +9,7 @@ public:
     }
 
 private:
-    int static partition(int* arr, int lo, int hi) {
+    int static partition(vector<int>& arr, int lo, int hi) {
         int pivot = arr[lo];
         int i = lo + 1, j = hi;
 
@@ -20,11 +18,12 @@ private:
             while (i <= hi && arr[i] <= pivot)    i++;
             if (i >= j)    break;
             // Exchange arr[i] and arr[j]
-            int temp = arr[j];    arr[j] = arr[i];    arr[i] = temp;
+            swap(arr[i], arr[j]);
         }
 
         // Exchange pivot with arr[j];
-        arr[lo] = arr[j];    arr[j] = pivot;
+        swap(arr[lo], arr[j]);
+        
         return j;
     }
 };
@@ -33,8 +32,8 @@ private:
 int main() {
     quicksort* qs = new quicksort();
 
-    int arr[] = {6, 2, 7, 3, 8, 9};
-    int n = sizeof(arr) / sizeof(*arr);
+    vector<int> arr{6, 2, 7, 3, 8, 9};
+    int n = arr.size();
 
     // Quick sort
     qs->qsort(arr, 0, n - 1);
