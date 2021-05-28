@@ -1,4 +1,5 @@
-// Fenwick Tree
+// Binary Index Tree
+
 class FenwickTree {
     vector<int> prefix;
 
