@@ -1,17 +1,19 @@
 int mod = 1e9 + 7;
 
 // Recurrsive
-int qpow(int a, int n) {
-    if (n == 0) {
-        return 1;
+long long qpow(long long x, long long n) {
+    if (n == 0)    return 1;
+    
+    long long res = 0;
+    if (n % 2 == 0) {
+        long long temp = qpow(x, n / 2);
+        res = (temp * temp) % mod;
+    } else {
+        long long temp = qpow(x, n / 2);
+        res = (temp * temp * x) % mod;
     }
-    else if (n % 2 == 1) {
-        return qpow(a, n - 1) * a % mod;
-    }
-    else {
-        int temp = qpow(a, n / 2) % mod;
-        return temp * temp % mod;
-    }
+    
+    return res;
 }
 
 
