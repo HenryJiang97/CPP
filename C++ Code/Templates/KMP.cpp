@@ -29,7 +29,8 @@ class Solution {
 
 class Solution {
 public:
-    int strStr(string s, string p) {
+    int kmp(string s, string p) {
+        if (s == p)    return 0;
         int ns = s.length(), np = p.length();
         
         vector<int> suffix = getSuffix(p);
